@@ -25,3 +25,16 @@ a:hover {
   background-color: #2f5578;
   color: #fff8e3;
 }
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style-type: none;
+  padding-right: 10px;
+}
+
+nav a {
+  margin: 8px;
+}
