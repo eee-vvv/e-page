@@ -4,11 +4,20 @@ html, body {
   width: 100vw;
   background: #fff8e3;
   font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 16px;
 }
 
 main {
   max-width: 700px;
   padding: 10px;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+h2, h3 {
+  font-size: 16px;
 }
 
 p {
