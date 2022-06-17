@@ -13,11 +13,16 @@ main {
 }
 
 h1 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
-h2, h3 {
-  font-size: 16px;
+h2 {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+h3 {
+  font-size: 15px;
 }
 
 p {
@@ -26,8 +31,8 @@ p {
 }
 
 a {
-  text-decoration: none;
-  color: #2f5578;
+  text-decoration: underline;
+  color: #4771b5;
 }
 
 a:hover {
