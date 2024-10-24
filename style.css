@@ -2,7 +2,7 @@
 
 html, body {
   width: 100vw;
-  background: #00ff37;
+  background: #c9bbc4;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 16px;
 }
@@ -14,7 +14,6 @@ main {
 
 h1 {
   font-size: 24px;
-  background-color: #ff4a6e;
   padding: 10px;
   width: max-content;
 }
@@ -32,7 +31,6 @@ p {
   text-align: justify;
   padding: 10px;
   padding-right: 20px;
-  background-color: #ff4a6e;
   max-width: 400px;
 }
 
