@@ -1,11 +1,61 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+/* ==========================================================================
+   style.css — shared by every page on the site.
 
-html,
+   Sections:
+     1. Settings     ← colors, fonts, sizes. Edit these first.
+     2. Base         ← defaults for text, links, images
+     3. Home page    ← index.html layout (photo, bio, name, links)
+     4. Work page    ← work.html
+     5. Mobile       ← overrides for small screens (< 800px wide)
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+
+
+/* 1. Settings ------------------------------------------------------------- */
+
+:root {
+    /* Colors */
+    --color-heading: #340d67;     /* dark purple: h2, h3 */
+    --color-text: #5d5766;        /* grey body text */
+    --color-link: #4771b5;
+    --color-link-hover-bg: #2f5578;
+    --color-link-hover-text: #fff8e3;
+    --color-background: white;
+
+    /* Fonts */
+    --font: "IBM Plex Sans", sans-serif;
+    --size-body: 24px;
+    --size-h1: 24px;
+    --size-h2: 50px;
+    --size-h3: 30px;
+
+    /* Home page layout */
+    --photo-width: 500px;
+    --name-width: 30vw;
+    --name-offset: 300px;         /* how far down the handwritten name sits */
+    --page-padding: 40px;
+}
+
+
+/* 2. Base ----------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    width: 100vw;
-    background: white;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-size: 24px;
+    margin: 0;
+    background: var(--color-background);
+    font-family: var(--font);
+    font-size: var(--size-body);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 main {
@@ -14,102 +64,145 @@ main {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: var(--size-h1);
     padding: 10px;
-    width: max-content;
 }
 
 h2 {
-    font-size: 50px;
-    font-weight: bold;
-    justify-self: left;
-    color: #340d67;
+    font-size: var(--size-h2);
+    color: var(--color-heading);
 }
 
 h3 {
-    font-size: 15px;
+    font-size: var(--size-h3);
+    color: var(--color-heading);
+    text-decoration: underline;
 }
 
 p {
-    text-align: left;
     max-width: 500px;
-    color: #5d5766;
-}
-
-em {
-    color: blue;
-    text-decoration: underline;
+    color: var(--color-text);
 }
 
 a {
+    color: var(--color-link);
     text-decoration: underline;
-    color: #4771b5;
 }
 
 a:hover {
-    background-color: #2f5578;
-    color: #fff8e3;
+    background-color: var(--color-link-hover-bg);
+    color: var(--color-link-hover-text);
 }
 
-nav a {
-    margin: 8px;
-}
-
-#container {
-    display: flex;
-    flex-direction: row;
-    width: 96vw;
-    justify-content: space-between;
-}
-
-.container-child {
-    flex: 1;
-}
-
-.links-list {
-    display: flex;
-    flex-direction: column;
-}
-
-h3 {
-    font-size: 30px;
-    color: #340d67;
-    text-decoration: underline;
+ul {
+    padding: 0;
 }
 
 li {
     list-style: none;
 }
 
-a {
-    color: white;
+nav a {
+    margin: 8px;
 }
 
-.links-container:hover a {
-    color: black;
-}
 
-#head {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
+/* 3. Home page ------------------------------------------------------------ */
 
-#head * {
-    margin: 40px;
-}
-
-#bio * {
-    margin: 0;
+/* The home page uses the full window width, unlike the text pages. */
+.home main {
+    max-width: none;
     padding: 0;
 }
 
-#name {
-    padding-top: 300px;
-    max-width: 40vw;
+/* Four columns, left to right: #head | .spacer | #name | links */
+#container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding: var(--page-padding);
 }
 
-#me {
-    max-width: 500px;
-    height: auto;
+.container-child {
+    flex: 1;
+}
+
+/* Photo + bio */
+#head {
+    flex: 0 0 min(var(--photo-width), 35vw);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+#bio h2 {
+    margin: 0 0 0.3em;
+}
+
+#bio p {
+    margin: 0;
+}
+
+/* Handwritten name image */
+#name {
+    flex: 0 1 var(--name-width);
+    margin-top: var(--name-offset);
+}
+
+/* Link lists. Links stay invisible until you hover the section;
+   delete these two rules to always show them. */
+.links-container a {
+    color: var(--color-background);
+}
+
+.links-container:hover a,
+.links-container:focus-within a {
+    color: black;
+}
+
+/* Phones/tablets can't hover, so always show the links there. */
+@media (hover: none) {
+    .links-container a {
+        color: var(--color-link);
+    }
+}
+
+
+/* 4. Work page ------------------------------------------------------------ */
+
+/* (work.html currently uses only the base styles above) */
+
+
+/* 5. Mobile --------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+    :root {
+        --size-body: 18px;
+        --size-h2: 36px;
+        --size-h3: 24px;
+        --page-padding: 16px;
+    }
+
+    /* Stack the columns vertically */
+    #container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+
+    #head {
+        flex: none;
+        gap: 24px;
+    }
+
+    #name {
+        flex: none;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .spacer {
+        display: none;
+    }
 }
