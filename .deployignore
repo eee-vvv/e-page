@@ -3,3 +3,4 @@
 .deployignore
 CNAME
 README.md
+deploy.sh
